@@ -38,7 +38,7 @@ public static class GamesEndpoints
         // GET /games/1
         group.MapGet("/{id}", (int id) =>
         {
-            GameDto? game = games.Find(x => x.ID == id);
+            GameDto? game = games.Find(x => x.Id == id);
             return game is null ? Results.NotFound() : Results.Ok(game);
         }).WithName(GetGameEndpointName);
 
@@ -54,13 +54,13 @@ public static class GamesEndpoints
             );
             games.Add(game);
 
-            return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.ID }, game);
+            return Results.CreatedAtRoute(GetGameEndpointName, new { id = game.Id }, game);
         });
 
         // PUT /games/1
         group.MapPut("/{id}", (int id, UpdateGameDto updatedGame) =>
         {
-            var index = games.FindIndex(game => game.ID == id);
+            var index = games.FindIndex(game => game.Id == id);
 
             if (index == -1)
             {
@@ -80,7 +80,7 @@ public static class GamesEndpoints
         // DELETE /games/1
         group.MapDelete("/{id}", (int id) =>
         {
-            games.RemoveAll(game => game.ID == id);
+            games.RemoveAll(game => game.Id == id);
 
             return Results.NoContent();
         });

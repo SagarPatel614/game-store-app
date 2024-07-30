@@ -1,7 +1,7 @@
 ﻿namespace GameStore.API.dtos;
 
 public record class GameDto(
-    int ID,
+    int Id,
     string Name,
     string Genre,
     decimal Price,
