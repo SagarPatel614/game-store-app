@@ -11,6 +11,7 @@ builder.Services.AddSqlite<GameStoreContext>(connString);  //Scoped_lifeline
 var app = builder.Build();
 
 app.MapGamesEndpoints();
+app.MapGenresEndpoints();
 
 await app.MigrateDbAsync();
 
